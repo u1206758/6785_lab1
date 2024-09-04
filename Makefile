@@ -25,7 +25,7 @@ firmware.elf: $(OBJS)
 all: firmware.elf
 
 clean:
-	rm -f main.i main.s main.o second.i second.s second.o hello.txt
+	rm -f main.i main.s main.o second.i second.s second.o hello.txt firmware.elf
 
 .PHONY: clean all
 
