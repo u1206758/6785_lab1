@@ -22,15 +22,15 @@ jobs:
       working-directory: ${{github.workspace}}/pico-sdk
       run: git submodule update --init
 
-    #- name: Say hello
-    #  working-directory: ${{github.workspace}}
-    #  run:
+    - name: Say hello
+      working-directory: ${{github.workspace}}
+      run:
     #    test ! -f hello.txt
-    #    test ! -f main.o
-    #    test ! -f main.i
-    #    test ! -f main.s
-    #    make hello.txt
-    #    test -f hello.txt
+     #   test ! -f main.o
+      #  test ! -f main.i
+       # test ! -f main.s
+        make hello.txt
+        test -f hello.txt
 
     - name: Compile
       shell: bash
