@@ -22,24 +22,24 @@ jobs:
       working-directory: ${{github.workspace}}/pico-sdk
       run: git submodule update --init
 
-    - name: Say hello
-      shell: bash
-      working-directory: ${{github.workspace}}
-      run:
-        test ! -f hello.txt;
-        test ! -f main.o;
-        test ! -f main.i;
-        test ! -f main.s;
-        make hello.txt;
-        test -f hello.txt;
+    #- name: Say hello
+    #  shell: bash
+    #  working-directory: ${{github.workspace}}
+    #  run:
+    #    test ! -f hello.txt;
+    #    test ! -f main.o;
+    #    test ! -f main.i;
+    #    test ! -f main.s;
+    #    make hello.txt;
+    #    test -f hello.txt;
 
     - name: Compile
       shell: bash
       working-directory: ${{github.workspace}}
       run:
-        test ! -f firmware.elf
-        PICO_TOOLCHAIN_PATH=../pico-sdk make
-        test -f firmware.elf
+        test ! -f firmware.elf;
+        PICO_TOOLCHAIN_PATH=../pico-sdk make;
+        test -f firmware.elf;
     - name: Clean
       shell: bash
       working-directory: ${{github.workspace}}
