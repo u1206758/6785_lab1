@@ -1,5 +1,5 @@
 hello.txt:
-#	echo "hello world" > hello.txt
+	echo "hello world" > hello.txt
 
 CPP=$(PICO_TOOLCHAIN_PATH)/bin/arm-none-eabi-cpp
 CC=$(PICO_TOOLCHAIN_PATH)/bin/arm-none-eabi-gcc
