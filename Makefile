@@ -9,7 +9,7 @@ main.i: main.c
 clean:
 	rm -f main.i second.i hello.txt
 
-.PHONY: clean
+.PHONY: clean all
 
 CC=$(PICO_TOOLCHAIN_PATH)/opt/homebrew/bin/arm-none-eabi-gcc
 AS=$(PICO_TOOLCHAIN_PATH)/opt/homebrew/bin/arm-none-eabi-AS
@@ -31,3 +31,12 @@ second.s: second.i
 
 %.o : %.s 
 	$(AS) $< -o $@
+
+LD=$(PICO_TOOLCHAIN_PATH)/opt/homebrew/arm-none-eabi-ld 
+SRC=main.c second.c 
+OBJS=$(patsubst %.c,%.o,$(SRC))
+
+firmware.elf: $(OBJS)
+	$(LD) -o $@ $^
+
+all: firmware.elf
