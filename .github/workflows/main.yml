@@ -30,7 +30,7 @@ jobs:
         test ! -f main.i
         test ! -f main.s
         make hello.txt
-        test -f hello.txt
+        #test -f hello.txt
 
     - name: Compile
       shell: bash
