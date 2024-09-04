@@ -12,17 +12,6 @@ jobs:
         rm -rf "${{ github.workspace }}"
         mkdir -p "${{ github.workspace }}"
 
-    - name: Checkout pico-sdk/develop
-      uses: actions/checkout@v2
-      with:
-        repository: raspberrypi/pico-sdk
-        ref: develop
-        path: pico-sdk
-
-    - name: Checkout pico-sdk submodules
-      working-directory: ${{github.workspace}}/pico-sdk
-      run: git submodule update --init
-    
     - name: Checkout repository
       uses: actions/checkout@main
 
@@ -36,6 +25,17 @@ jobs:
         test ! -f main.s;
         make hello.txt;
         test -f hello.txt;
+    
+    - name: Checkout pico-sdk/develop
+      uses: actions/checkout@v2
+      with:
+        repository: raspberrypi/pico-sdk
+        ref: develop
+        path: pico-sdk
+
+    - name: Checkout pico-sdk submodules
+      working-directory: ${{github.workspace}}/pico-sdk
+      run: git submodule update --init
 
     - name: Compile
       shell: bash
