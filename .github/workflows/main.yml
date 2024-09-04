@@ -26,7 +26,7 @@ jobs:
       shell: bash
       working-directory: ${{github.workspace}}
       run:
-        test ! -f "hello.txt"
+        test -f hello.txt
         test ! -f main.o
         test ! -f main.i
         test ! -f main.s
