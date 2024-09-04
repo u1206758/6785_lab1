@@ -1,9 +1,9 @@
 hello.txt:
 	echo "hello world" > hello.txt
 
-CPP=$(PICO_TOOLCHAIN_PATH)/opt/homebrew/bin/arm-none-eabi-cpp
-CC=$(PICO_TOOLCHAIN_PATH)/opt/homebrew/bin/arm-none-eabi-gcc
-AS=$(PICO_TOOLCHAIN_PATH)/opt/homebrew/bin/arm-none-eabi-AS
+CPP=$(PICO_TOOLCHAIN_PATH)/bin/arm-none-eabi-cpp
+CC=$(PICO_TOOLCHAIN_PATH)/bin/arm-none-eabi-gcc
+AS=$(PICO_TOOLCHAIN_PATH)/bin/arm-none-eabi-AS
 
 %.i : %.c 
 	$(CPP) $< > $@
@@ -12,9 +12,10 @@ AS=$(PICO_TOOLCHAIN_PATH)/opt/homebrew/bin/arm-none-eabi-AS
 	$(CC) -S $@
 
 %.o : %.s 
+
 	$(AS) $< -o $@
 
-LD=$(PICO_TOOLCHAIN_PATH)/opt/homebrew/bin/arm-none-eabi-ld 
+LD=$(PICO_TOOLCHAIN_PATH)/bin/arm-none-eabi-ld 
 SRC=main.c second.c 
 OBJS=$(patsubst %.c,%.o,$(SRC))
 
